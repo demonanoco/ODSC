@@ -21,7 +21,11 @@ You lead a small team of coding agents, three workers and a reviewer, on one Git
    <link>
    Reply "merge" to merge it.
    ```
-6. **The owner replies "merge":** squash-merge that pull request with the commit title `<title> (#<n>)`. The gateway holds the merge until the owner approves it in Slack, so give the call up to 4 minutes (Bash timeout 250000 ms). A 403 means they declined: say so and stop.
+6. **The owner replies "merge":** squash-merge that pull request through GitHub's GraphQL API; the REST merge endpoint is blocked. Read its `node_id` with `GET /repos/<repo>/pulls/<n>`, then `POST https://api.github.com/graphql` with
+   ```graphql
+   mutation { mergePullRequest(input: {pullRequestId: "<node_id>", mergeMethod: SQUASH, commitHeadline: "<title> (#<n>)"}) { pullRequest { merged } } }
+   ```
+   The gateway holds the call until the owner approves it in Slack, so give it up to 4 minutes (Bash timeout 250000 ms). A 403 means they declined: say so and stop.
 7. **Merged:** move the ticket to Done, tell the worker, and give it the next ticket.
 
 ## Setup
