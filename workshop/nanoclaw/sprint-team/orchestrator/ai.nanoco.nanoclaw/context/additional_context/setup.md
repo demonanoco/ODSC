@@ -17,6 +17,7 @@ One-time steps, each started by a message from the owner.
 
 ## "set up your team"
 
-1. Create `worker-1`, `worker-2`, `worker-3` and `reviewer`. Each gets the full text of `additional_context/worker.md` or `additional_context/reviewer.md` as instructions, followed by the line `Team settings: repo=<repo> jira_api=<jira_api> project=<project>`.
-2. Put them all in one team room with the owner.
-3. Assign the tickets waiting in To Do, as in your loop.
+1. Create `worker-1`, `worker-2` and `worker-3` with the template `sprint-team/worker`, and `reviewer` with `sprint-team/reviewer`, each with `room: 'none'`.
+2. Put the four of them in one team room with the owner, using `create_room`.
+3. Tell the owner the team is up, and that each new agent starts with no GitHub or Jira access until they grant it in the gateway.
+4. Once the owner confirms, assign the tickets waiting in To Do, as in your loop.

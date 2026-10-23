@@ -5,7 +5,7 @@ description: Search, read, create, comment on and move tickets in the owner's Ji
 
 # Jira
 
-Jira Cloud REST API v3, called with no auth header: the gateway adds the credential. The base is `jira_api` in `sprint.json`:
+Jira Cloud REST API v3, called with no auth header: the gateway adds the credential. The base, `jira_api`, takes one of two forms:
 
 | The gateway holds | `jira_api` |
 |---|---|
