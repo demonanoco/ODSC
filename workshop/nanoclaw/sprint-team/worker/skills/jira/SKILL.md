@@ -17,7 +17,7 @@ Jira Cloud REST API v3, called with no auth header: the gateway adds the credent
 | To | Call |
 |---|---|
 | Search | `POST /search/jql` with `{"jql": "...", "fields": [...]}`. The older `/search` is retired. |
-| Tickets still to do | JQL `project = <project> AND labels = <label> AND statusCategory = "To Do" ORDER BY created ASC` |
+| Tickets still to do | JQL `project = <project> AND labels = <label> AND status = "To Do" ORDER BY created ASC` |
 | Read a ticket | `GET /issue/<key>?fields=summary,description,status,comment` |
 | Create a task | `POST /issue` with `project.key`, `issuetype.name: "Task"`, `summary`, `description`, `labels` |
 | Comment | `POST /issue/<key>/comment` with `body` |
