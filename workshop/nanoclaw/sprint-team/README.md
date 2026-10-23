@@ -34,11 +34,11 @@ The agents hold no credentials. On OneCLI 1.44 and later, a new agent gets only 
 
 | Agent | GitHub | Jira |
 |---|---|---|
-| Orchestrator | Read repository, list pull requests, GraphQL queries: allow. GraphQL mutations: **ask** (this is the merge). Everything else: block | Full |
-| Workers | Clone, push, create pull request, comment, read: allow. GraphQL mutations, delete branch: block | Full |
-| Reviewer | Clone, read, comment: allow. Everything else: block | Full |
+| Orchestrator | Allow: read repository, list pull requests. **Ask: GraphQL queries and GraphQL mutations** (its only GraphQL call is the merge) | Full |
+| Workers | Allow: clone, push, read repository, list pull requests, create pull request, create comment | Allow: read issue, add comment |
+| Reviewer | Allow: clone, read repository, list pull requests, create comment | Allow: read issue |
 
-A merge through GitHub's REST endpoint has no action of its own, so a limited grant blocks it. The orchestrator merges through GraphQL, which waits for your approval in Slack.
+Everything not listed is blocked. Two traps in OneCLI 1.45: "GraphQL queries" and "GraphQL mutations" match the same requests, so set them the same way; and a merge through GitHub's REST endpoint has no action of its own, so a limited grant blocks it. The orchestrator merges through GraphQL, which waits for your approval in Slack.
 
 The gateway can't tell branches apart on a push. Protect `main` on GitHub so a pushed branch can only land through a pull request.
 
