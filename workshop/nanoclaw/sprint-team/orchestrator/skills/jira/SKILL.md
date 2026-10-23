@@ -16,12 +16,14 @@ Jira Cloud REST API v3, called with no auth header: the gateway adds the credent
 
 | To | Call |
 |---|---|
+| List projects | `GET /project/search` |
 | Search | `POST /search/jql` with `{"jql": "...", "fields": [...]}`. The older `/search` is retired. |
-| Tickets still to do | JQL `project = <project> AND labels = <label> AND status = "To Do" ORDER BY created ASC` |
+| A project's statuses | `GET /project/<project>/statuses`: each issue type with its statuses (`id`, `name`, `statusCategory`) |
+| Tickets in one status | JQL `project = <project> AND labels = <label> AND status = <status id> ORDER BY created ASC` |
 | Read a ticket | `GET /issue/<key>?fields=summary,description,status,comment` |
 | Create a task | `POST /issue` with `project.key`, `issuetype.name: "Task"`, `summary`, `description`, `labels` |
 | Comment | `POST /issue/<key>/comment` with `body` |
-| Move it | `GET /issue/<key>/transitions`, then `POST` the id of "In Progress" or "Done". Ids differ per project. |
+| Move it | `GET /issue/<key>/transitions`, then `POST` the transition whose `to.id` is the target status id. |
 
 Descriptions and comments are Atlassian Document Format: `{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"..."}]}]}`, one paragraph per block of text.
 
