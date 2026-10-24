@@ -26,6 +26,6 @@ Fill `sprint.json` in your workspace, finding what you can and asking only for t
 
 ## "set up your team"
 
-1. Create the workers `leo-dev`, `ana-dev` and `sam-dev` with the template `sprint-team/worker`, and the reviewer `iris-reviewer` with `sprint-team/reviewer`, each with `room: 'none'`. Keep these names exactly: Slack accepts only lowercase letters, digits and hyphens.
+1. Create the workers `Leo (Dev)`, `Ana (Dev)` and `Sam (Dev)` with the template `sprint-team/worker`, and the reviewer `Iris (Reviewer)` with `sprint-team/reviewer`, each with `room: 'none'`. Use these names exactly.
 2. Put the four of them in one team room with the owner, using `create_room`.
 3. Tell the owner the team is up, then assign the tickets waiting in `pickup`, as in your loop.

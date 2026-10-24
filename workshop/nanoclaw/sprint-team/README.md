@@ -4,9 +4,9 @@ Three NanoClaw templates that run a small team of coding agents on one GitHub re
 
 | Template | Agent | Does |
 |---|---|---|
-| `sprint-team/orchestrator` | `maya-lead` | Watches your board, assigns tickets, routes reviews, merges what you approve |
-| `sprint-team/worker` | `leo-dev`, `ana-dev`, `sam-dev` | One ticket at a time: a worktree from the latest `main`, the change, tests, a pull request |
-| `sprint-team/reviewer` | `iris-reviewer` | Checks each pull request against its ticket and the repo's `AGENTS.md`, and runs the tests |
+| `sprint-team/orchestrator` | Maya (Lead) | Watches your board, assigns tickets, routes reviews, merges what you approve |
+| `sprint-team/worker` | Leo (Dev), Ana (Dev), Sam (Dev) | One ticket at a time: a worktree from the latest `main`, the change, tests, a pull request |
+| `sprint-team/reviewer` | Iris (Reviewer) | Checks each pull request against its ticket and the repo's `AGENTS.md`, and runs the tests |
 
 You install the orchestrator. It creates the workers and the reviewer itself, from their templates, when you say "set up your team".
 

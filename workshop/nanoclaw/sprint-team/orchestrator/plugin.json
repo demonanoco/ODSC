@@ -5,7 +5,7 @@
   "description": "Leads a small team of coding agents on one GitHub repo: picks up Jira tickets, assigns them to workers, routes reviews, and merges only when the owner says so",
   "extensions": {
     "ai.nanoco.nanoclaw": {
-      "agentName": "maya-lead"
+      "agentName": "Maya (Lead)"
     }
   }
 }
