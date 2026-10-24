@@ -25,7 +25,15 @@ Jira Cloud REST API v3, called with no auth header: the gateway adds the credent
 | Comment | `POST /issue/<key>/comment` with `body` |
 | Move it | `GET /issue/<key>/transitions`, then `POST` the transition whose `to.id` is the target status id. |
 
-Descriptions and comments are Atlassian Document Format: `{"type":"doc","version":1,"content":[{"type":"paragraph","content":[{"type":"text","text":"..."}]}]}`, one paragraph per block of text.
+Descriptions and comments are Atlassian Document Format (ADF), not Markdown: `{"type":"doc","version":1,"content":[...]}`, one `paragraph` per block of text. Format them so they read well in Jira:
+
+| For | Text node |
+|---|---|
+| A link, e.g. a pull request | `{"type":"text","text":"PR #7","marks":[{"type":"link","attrs":{"href":"https://github.com/<repo>/pull/7"}}]}` |
+| Code, a file path, a command | `{"type":"text","text":"src/elements/windows.js","marks":[{"type":"code"}]}` |
+| Bold | `{"type":"text","text":"Ready to merge","marks":[{"type":"strong"}]}` |
+
+A list is `{"type":"bulletList","content":[{"type":"listItem","content":[{"type":"paragraph","content":[...]}]}]}`.
 
 ## Errors
 
