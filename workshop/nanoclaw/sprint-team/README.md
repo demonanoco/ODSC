@@ -50,7 +50,7 @@ The agents hold no credentials. In the OneCLI dashboard, connect GitHub (the Git
 | Request | Rule |
 |---|---|
 | Merging a pull request (`PUT api.github.com/repos/*/*/pulls/*/merge`) | Needs approval: each merge waits for your OK in Slack |
-| Creating or deleting a Jira issue | Needs approval, so no agent adds or removes work on its own |
+| Deleting a Jira issue | Needs approval |
 | GitHub GraphQL (`POST api.github.com/graphql`) | Blocked, so a merge can't go around the first rule |
 | Deleting a GitHub branch | Blocked |
 | Everything else | Allowed |

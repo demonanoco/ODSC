@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Step 3: the gateway rules, the same for every agent. Approval for what's yours to
-# decide (merging a pull request, creating or deleting a Jira issue), a block for what
+# decide (merging a pull request, deleting a Jira issue), a block for what
 # no agent needs (GitHub GraphQL, the way around the merge rule, and deleting
 # branches); everything else is allowed. Safe to run again: existing rules are kept.
 set -euo pipefail
@@ -30,8 +30,8 @@ add_rule "No GitHub GraphQL" \
   '{"name":"No GitHub GraphQL","action":"block","targets":[{"kind":"network","hostPattern":"api.github.com","pathPattern":"/graphql","method":"POST"}]}'
 add_rule "No deleting GitHub branches" \
   '{"name":"No deleting GitHub branches","action":"block","targets":[{"kind":"network","hostPattern":"api.github.com","pathPattern":"/repos/*/*/git/refs/*","method":"DELETE"}]}'
-add_rule "Creating or deleting a Jira issue needs approval" \
-  '{"name":"Creating or deleting a Jira issue needs approval","action":"allow","requireApproval":true,"targets":[{"kind":"app","provider":"jira","tools":["create_issue","delete_issue"]}]}'
+add_rule "Deleting a Jira issue needs approval" \
+  '{"name":"Deleting a Jira issue needs approval","action":"allow","requireApproval":true,"targets":[{"kind":"app","provider":"jira","tools":["delete_issue"]}]}'
 
 curl -fsS -m 10 -X POST "$URL/v1/policy/publish" -H 'Content-Type: application/json' -d '{}' >/dev/null ||
   fail "The rules were saved but not published. Publish them in the dashboard ($URL), under Rules."
