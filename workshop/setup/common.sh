@@ -3,13 +3,17 @@ ONECLI_VERSION_PIN=1.42.0
 ONECLI_ENV="$HOME/.onecli/.env"
 
 # The NanoClaw folder from the first argument (relative to where you run the script),
-# or ~/nanoclaw-v2. Its parent is created if missing.
+# or ~/nanoclaw-odsc. Its parent is created if missing.
 nanoclaw_dir() {
-  local dir="${1:-$HOME/nanoclaw-v2}"
+  local dir="${1:-$HOME/nanoclaw-odsc}"
   case "$dir" in "~"*) dir="$HOME${dir#\~}" ;; esac
   mkdir -p "$(dirname "$dir")"
   echo "$(cd "$(dirname "$dir")" && pwd)/$(basename "$dir")"
 }
+
+# Written into the NanoClaw folder this kit creates; the scripts only ever reuse or
+# remove a folder that carries it, never someone's other NanoClaw install.
+KIT_MARKER=".odsc-workshop"
 
 say() { printf '\n▸ %s\n' "$*"; }
 fail() { printf '\n✗ %s\n' "$*" >&2; exit 1; }

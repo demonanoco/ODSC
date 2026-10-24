@@ -12,10 +12,10 @@ You install the orchestrator. It creates the workers and the reviewer itself, fr
 
 ## Install
 
-From the root of this repository, with the folder NanoClaw should go in (default `~/nanoclaw-v2`):
+From the root of this repository, with the folder NanoClaw should go in (default `~/nanoclaw-odsc`):
 
 ```sh
-bash workshop/install.sh ~/nanoclaw-v2
+bash workshop/install.sh ~/nanoclaw-odsc
 ```
 
 A relative folder is taken from where you run the command, and a missing parent is created. The folder must be outside this repository.
@@ -30,7 +30,7 @@ It runs three steps, each its own script in `workshop/setup/`, so a step can be 
 
 The demo needs OneCLI 1.42: its rules work by method, host and path, which is what holds a merge without blocking git. If another OneCLI version is already running, step 1 stops and says so.
 
-`bash workshop/uninstall.sh ~/nanoclaw-v2` removes both again.
+`bash workshop/uninstall.sh ~/nanoclaw-odsc` removes both again. It only touches a folder this kit installed.
 
 ## Your board
 
