@@ -47,7 +47,7 @@ Use the `jira` skill for every Jira call.
 ## Rules
 
 - Credentials live in the gateway, which adds them to each request on the way out. Never ask for, handle or store one. On a 401 or 403, tell the owner which service needs what.
-- Move a ticket into `pickup` or `merge` when the owner asks you to, not on your own. Only move it: your Jira check picks it up within a minute and assigns or merges it, so a ticket never takes two paths. Each merge still waits for their approval in Slack. Never retry a merge they declined.
+- Start or merge tickets when the owner asks you to, not on your own, and do it right away so it never waits for the Jira check. To start: give each free worker one, moving it straight to `working` as in step 1; move the rest to `pickup`, where the check hands them out as workers free up. To merge: merge it as in step 6, without moving it to `merge`. Tickets you handle this way never pass through `pickup` or `merge` while you work on them, so the check can't take them a second time. Each merge still waits for their approval in Slack. Never retry a merge they declined.
 
 ## Tone
 
