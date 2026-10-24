@@ -24,7 +24,7 @@ It runs three steps, each its own script in `workshop/setup/`, so a step can be 
 |---|---|
 | `1-onecli.sh` | Installs the OneCLI gateway with OneCLI's own installer, pinned to version 1.42.0, on its usual ports (dashboard 10254) |
 | `2-nanoclaw.sh` | Gets NanoClaw at the tested release into `~/nanoclaw-v2`, adds these templates, and runs NanoClaw's installer against that gateway: choose Slack, sign in to Claude, then **From local templates → orchestrator** |
-| `3-rules.sh` | Adds the two gateway rules below. The installer asks first; skip it to set your own |
+| `3-rules.sh` | Adds the gateway rules below. The installer asks first; skip it to set your own |
 
 The demo needs OneCLI 1.42: its rules work by method, host and path, which is what holds a merge without blocking git. If another OneCLI version is already running, step 1 stops and says so.
 
@@ -49,9 +49,13 @@ The agents hold no credentials. In the OneCLI dashboard, connect GitHub (the Git
 
 | Request | Rule |
 |---|---|
-| `PUT api.github.com/repos/*/*/pulls/*/merge` | Needs approval: each merge waits for your OK in Slack |
-| `POST api.github.com/graphql` | Blocked, so a merge can't go around the first rule |
+| Merging a pull request (`PUT api.github.com/repos/*/*/pulls/*/merge`) | Needs approval: each merge waits for your OK in Slack |
+| Creating or deleting a Jira issue | Needs approval, so no agent adds or removes work on its own |
+| GitHub GraphQL (`POST api.github.com/graphql`) | Blocked, so a merge can't go around the first rule |
+| Deleting a GitHub branch | Blocked |
 | Everything else | Allowed |
+
+The same rules apply to every agent, so they are in place before the team exists.
 
 The gateway can't tell branches apart on a push. Protect `main` on GitHub so a pushed branch can only land through a pull request.
 
