@@ -12,23 +12,25 @@ You install the orchestrator. It creates the workers and the reviewer itself, fr
 
 ## Install
 
-From the root of this repository:
+From the root of this repository, with the folder NanoClaw should go in (default `~/nanoclaw-v2`):
 
 ```sh
-bash workshop/install.sh
+bash workshop/install.sh ~/nanoclaw-v2
 ```
+
+A relative folder is taken from where you run the command, and a missing parent is created. The folder must be outside this repository.
 
 It runs three steps, each its own script in `workshop/setup/`, so a step can be run again on its own:
 
 | Step | Does |
 |---|---|
 | `1-onecli.sh` | Installs the OneCLI gateway with OneCLI's own installer, pinned to version 1.42.0, on its usual ports (dashboard 10254) |
-| `2-nanoclaw.sh` | Gets NanoClaw at the tested release into `~/nanoclaw-v2`, adds these templates, and runs NanoClaw's installer against that gateway: choose Slack, sign in to Claude, then **From local templates → orchestrator** |
+| `2-nanoclaw.sh` | Gets NanoClaw at the tested release into that folder, adds these templates, and runs NanoClaw's installer against that gateway: choose Slack, sign in to Claude, then **From local templates → orchestrator** |
 | `3-rules.sh` | Adds the gateway rules below. The installer asks first; skip it to set your own |
 
 The demo needs OneCLI 1.42: its rules work by method, host and path, which is what holds a merge without blocking git. If another OneCLI version is already running, step 1 stops and says so.
 
-`bash workshop/uninstall.sh` removes both again.
+`bash workshop/uninstall.sh ~/nanoclaw-v2` removes both again.
 
 ## Your board
 

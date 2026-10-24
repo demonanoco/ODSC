@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Sets up the Night City demo: the OneCLI gateway, NanoClaw with the Sprint Team
-# templates, and the gateway rules. Each step is its own script in setup/, so a
+# templates, and the gateway rules. Usage: bash workshop/install.sh [nanoclaw-folder]
+# (default ~/nanoclaw-v2). Each step is its own script in setup/, so a
 # step that fails can be fixed and run again alone.
 set -euo pipefail
 
@@ -8,7 +9,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . "$HERE/setup/common.sh"
 
 bash "$HERE/setup/1-onecli.sh"
-bash "$HERE/setup/2-nanoclaw.sh"
+bash "$HERE/setup/2-nanoclaw.sh" "${1:-}"
 
 printf '\nApply the recommended gateway rules (merges wait for your approval, GraphQL blocked)? [Y/n] '
 read -r answer </dev/tty || answer=y

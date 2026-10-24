@@ -2,6 +2,15 @@
 ONECLI_VERSION_PIN=1.42.0
 ONECLI_ENV="$HOME/.onecli/.env"
 
+# The NanoClaw folder from the first argument (relative to where you run the script),
+# or ~/nanoclaw-v2. Its parent is created if missing.
+nanoclaw_dir() {
+  local dir="${1:-$HOME/nanoclaw-v2}"
+  case "$dir" in "~"*) dir="$HOME${dir#\~}" ;; esac
+  mkdir -p "$(dirname "$dir")"
+  echo "$(cd "$(dirname "$dir")" && pwd)/$(basename "$dir")"
+}
+
 say() { printf '\n▸ %s\n' "$*"; }
 fail() { printf '\n✗ %s\n' "$*" >&2; exit 1; }
 

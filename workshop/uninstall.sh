@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
+# Usage: bash workshop/uninstall.sh [nanoclaw-folder] (default ~/nanoclaw-v2).
 # Removes what install.sh set up: NanoClaw through its own uninstaller, then the
 # OneCLI gateway and its data. Slack apps the agents created stay in your
 # workspace; remove them there.
 set -euo pipefail
+. "$(dirname "${BASH_SOURCE[0]}")/setup/common.sh"
 
-DIR="${NANOCLAW_DIR:-$HOME/nanoclaw-v2}"
+DIR="$(nanoclaw_dir "${1:-}")"
+shift || true
 
 if [ -x "$DIR/uninstall.sh" ]; then
   bash "$DIR/uninstall.sh" "$@"
