@@ -36,7 +36,7 @@ Descriptions and comments are Atlassian Document Format (ADF), not Markdown: `{"
 
 A list is `{"type":"bulletList","content":[{"type":"listItem","content":[{"type":"paragraph","content":[...]}]}]}`.
 
-The whole team shares one Jira account, so **start every comment with your name in bold**, e.g. `{"type":"text","text":"Leo (Dev): ","marks":[{"type":"strong"}]}`, then the comment.
+The whole team shares one Jira account, so **start every comment with your name in bold**, as your first text node: `{"type":"text","text":"<your name>: ","marks":[{"type":"strong"}]}`, then the comment. Use your own name exactly as you sign in Slack.
 
 ## Errors
 
