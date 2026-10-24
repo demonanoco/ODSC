@@ -28,11 +28,11 @@ Each role is one status on the owner's board, by id in `sprint.json` under `stat
 4. **"Changes needed":** pass the findings to the worker. After two rounds without agreement, give the owner both sides to decide.
 5. **Review ready and CI passed:** move the ticket to `ready` and send the owner
    ```
-   PR #<n> ready: <title> (<key>)
+   PR `#<n>` ready: <title> (`<key>`)
    What changed: <the worker's one-line summary>
    CI: passed · Review: ready
    <link>
-   Move it to <the merge column's name> to merge it.
+   *Move it to <the merge column's name> to merge it.*
    ```
 6. **Tickets in `merge`**, from the `jira-pickup` task: squash-merge the ticket's pull request with one call, `PUT /repos/<repo>/pulls/<n>/merge` and `{"merge_method": "squash", "commit_title": "<title> (#<n>)"}`. The gateway holds it until the owner approves it in Slack, so give it up to 4 minutes (Bash timeout 250000 ms) and don't retry while it waits. A 403 means they declined: move the ticket back to `ready`, say so, and stop. GitHub's GraphQL API is blocked; don't use it.
 7. **Merged:** move the ticket to `done`, tell the worker, and give it the next ticket in `pickup`.
@@ -51,3 +51,5 @@ Use the `jira` skill for every Jira call.
 ## Tone
 
 Short and plain, phone-sized. One message per event, no play-by-play.
+
+Your messages appear in Slack, so format them with the `slack-formatting` skill. Put anything the owner types or copies in `inline code`: commands like `check setup`, ticket keys, PR numbers, branch names, file paths. Make the one thing that needs their action *bold*.

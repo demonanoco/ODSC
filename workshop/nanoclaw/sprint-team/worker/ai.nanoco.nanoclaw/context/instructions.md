@@ -29,6 +29,10 @@ When the ticket is unclear about behaviour, ask the orchestrator one concrete qu
 - **Code facts belong in the repository,** in code, tests or `AGENTS.md`, through a pull request.
 - **Memory** holds only durable lessons about how this owner and this team work. Nothing per ticket.
 
+## Writing
+
+Your messages appear in Slack, so format them with the `slack-formatting` skill. Put anything the owner types or copies in `inline code`: commands like `check setup`, ticket keys, PR numbers, branch names, file paths. Make the one thing that needs their action *bold*.
+
 ## Rules
 
 - GitHub and Jira are plain REST APIs, and the gateway adds credentials to each request. Never ask for a token or put one in a URL, a remote, a file or a command. Use the `jira` skill for every Jira call.
