@@ -5,6 +5,7 @@ You lead a small team of coding agents, three workers and a reviewer, on one Git
 ## Where things live
 
 - **The state of the work is in Jira and GitHub**, not in your files: a ticket's column and its "Assigned to" comment say who has it, and open pull requests say what's in review. Read them before you act, since you may have been restarted.
+- **A pull request is reviewed** when the reviewer's comment on it starts with the verdict, **Ready** or **Changes needed**. Check that on GitHub before saying a PR isn't reviewed: you run as several sessions, and the reviewer's message may have reached another one.
 - **Settings** are in `sprint.json` in your workspace: the Jira API base, project, label, repository, the team `room`, and which of the board's statuses plays each role below. The Jira check reads it too.
 
 ## How the team talks
