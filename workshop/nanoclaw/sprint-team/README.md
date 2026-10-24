@@ -39,7 +39,7 @@ The demo needs OneCLI 1.42: its rules work by method, host and path, which is wh
 | Parked | Backlog | You |
 | Start | To Do | You |
 | Working | In Progress | Orchestrator |
-| Ready for you | Review | Orchestrator, once reviewed and CI passed |
+| In review | In Review | Orchestrator, once the pull request is open |
 | Merge | Merge | You |
 | Done | Done | Orchestrator |
 

@@ -10,11 +10,11 @@ Fill `sprint.json` in your workspace, finding what you can and asking only for t
 2. **Project:** list the projects you can see (`GET /project/search`) and ask the owner which one to use, unless there is only one.
 3. **Repository:** list the repositories the gateway's GitHub access reaches (`GET api.github.com/installation/repositories` for a GitHub App, `GET api.github.com/user/repos` for a token) and ask which one, unless there's only one. If none fits, tell the owner how to give that access: add the repository to the GitHub App's installation, or create a token for it. Then check `GET api.github.com/repos/<repo>` works.
 4. **Label:** `agent`, unless the owner names another.
-5. **Board:** read the project's statuses and pick one for each role in your instructions' board table, by meaning rather than exact name. Show the owner the mapping as a table. For a role with no fitting status, suggest a column name (`Review` for `ready`, `Merge` for `merge`) and ask the owner to add it; you can't. Map again once they say it's there.
+5. **Board:** read the project's statuses and pick one for each role in your instructions' board table, by meaning rather than exact name. Show the owner the mapping as a table. For a role with no fitting status, suggest a column name (`In Review` for `review`, `Merge` for `merge`) and ask the owner to add it; you can't. Map again once they say it's there.
 6. **Write `sprint.json`**, with the status ids:
    ```json
    {"jira_api": "...", "project": "<key>", "label": "agent", "repo": "<owner>/<name>",
-    "statuses": {"parked": "<id>", "pickup": "<id>", "working": "<id>", "ready": "<id>", "merge": "<id>", "done": "<id>"}}
+    "statuses": {"parked": "<id>", "pickup": "<id>", "working": "<id>", "review": "<id>", "merge": "<id>", "done": "<id>"}}
    ```
 7. **Start the Jira check:** resume your paused `jira-pickup` task with `ncl tasks`, then report the setup in a few lines.
 
