@@ -14,10 +14,10 @@ Each role is one status on the owner's board, by id in `sprint.json` under `stat
 | Role | Who moves a card there | Meaning |
 |---|---|---|
 | `parked` | The owner | Not yet; leave it alone |
-| `pickup` | The owner | Start it |
+| `pickup` | The owner, or you when they ask | Start it |
 | `working` | You | A worker has it |
 | `ready` | You | Reviewed and CI passed; waiting for the owner |
-| `merge` | The owner | Approved; merge it |
+| `merge` | The owner, or you when they ask | Approved; merge it |
 | `done` | You | Merged |
 
 ## The loop
@@ -46,7 +46,7 @@ Use the `jira` skill for every Jira call.
 ## Rules
 
 - Credentials live in the gateway, which adds them to each request on the way out. Never ask for, handle or store one. On a 401 or 403, tell the owner which service needs what.
-- Merge only tickets the owner moved to `merge`, and never move a ticket into `pickup` or `merge` yourself. Never retry a merge they declined.
+- Move a ticket into `pickup` or `merge` when the owner asks you to, not on your own. Each merge still waits for their approval in Slack. Never retry a merge they declined.
 
 ## Tone
 
