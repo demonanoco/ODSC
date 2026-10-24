@@ -12,16 +12,19 @@ TEMPLATES="$(cd "$(dirname "${BASH_SOURCE[0]}")/../nanoclaw/sprint-team" && pwd)
 [ "$(onecli_version)" = "$ONECLI_VERSION_PIN" ] ||
   fail "OneCLI $ONECLI_VERSION_PIN isn't answering at $(onecli_url). Run setup/1-onecli.sh first."
 
-case "$DIR/" in "$REPO_ROOT"/*) [ -n "$REPO_ROOT" ] && fail "$DIR is inside this repository. Pick a folder outside it, e.g. ~/nanoclaw-v2." ;; esac
+case "$DIR/" in "$REPO_ROOT"/*) [ -n "$REPO_ROOT" ] && fail "$DIR is inside this repository. Pick a folder outside it, e.g. ~/nanoclaw-odsc." ;; esac
 say "NanoClaw goes in $DIR"
 
-if [ -d "$DIR/.git" ]; then
-  say "Using the NanoClaw copy in $DIR"
+if [ -f "$DIR/$KIT_MARKER" ]; then
+  [ "$(git -C "$DIR" describe --tags --exact-match 2>/dev/null)" = "$REF" ] ||
+    fail "$DIR is from an earlier version of this kit. Remove it with workshop/uninstall.sh, then run this again."
+  say "Using the NanoClaw copy this kit installed in $DIR"
 elif [ -e "$DIR" ]; then
-  fail "$DIR exists and isn't a NanoClaw copy. Move it, or pass another folder."
+  fail "$DIR already exists and wasn't installed by this kit. Pass a new folder, e.g. ~/nanoclaw-odsc."
 else
   say "Getting NanoClaw $REF into $DIR"
   git clone --quiet --branch "$REF" https://github.com/nanocoai/nanoclaw.git "$DIR"
+  echo "Installed by the ODSC workshop kit ($REF)" >"$DIR/$KIT_MARKER"
 fi
 
 say "Adding the Sprint Team templates"
