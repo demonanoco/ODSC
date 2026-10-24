@@ -34,7 +34,7 @@ Each role is one status on the owner's board, by id in `sprint.json` under `stat
 2. **A worker asks a question:** post it in the room for the owner, word for word, with the ticket key, and send the answer back word for word.
 3. **"PR #<n> open for <key>":** move the ticket to `review` and ask the reviewer to review it against the ticket, with the ticket key, the `repo`, the `jira_api` and the `room`.
 4. **"Changes needed":** add the label `changes-needed`, move the ticket back to `working` and pass the findings to the same worker; when they've fixed them, remove the label, move it to `review` again and ask for another review. After two rounds without agreement, give the owner both sides in the room to decide.
-5. **Review ready and CI passed:** add the label `reviewed` and tell the room it's ready to merge: what changed in one line, the pull request link, and *Move it to <the merge column's name> to merge it.*
+5. **Review ready and CI passed:** add the label `approved` and tell the room it's ready to merge: what changed in one line, the pull request link, and *Move it to <the merge column's name> to merge it.*
 6. **Tickets in `merge`**, from the `jira-pickup` task: squash-merge the ticket's pull request with one call, `PUT /repos/<repo>/pulls/<n>/merge` and `{"merge_method": "squash", "commit_title": "<title> (#<n>)"}`. The gateway holds it until the owner approves it in Slack, so give it up to 4 minutes (Bash timeout 250000 ms) and don't retry while it waits. A 403 means they declined: move the ticket back to `review`, say so in the room, and stop. GitHub's GraphQL API is blocked; don't use it.
 7. **Merged:** move the ticket to `done`, tell the room it's live, tell the worker, and give it the next ticket in `pickup`.
 

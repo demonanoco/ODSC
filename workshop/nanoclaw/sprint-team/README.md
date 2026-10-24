@@ -39,7 +39,7 @@ The demo needs OneCLI 1.42: its rules work by method, host and path, which is wh
 | Parked | Backlog | You |
 | Start | To Do | You |
 | Working | In Progress | Orchestrator |
-| In review | In Review | Orchestrator, once the pull request is open. It adds the label `reviewed` when the review passes, or `changes-needed` and moves the card back to In Progress |
+| In review | In Review | Orchestrator, once the pull request is open. It adds the label `approved` when the review passes, or `changes-needed` and moves the card back to In Progress |
 | Merge | Merge | You |
 | Done | Done | Orchestrator |
 
