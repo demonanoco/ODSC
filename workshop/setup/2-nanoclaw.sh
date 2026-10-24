@@ -16,7 +16,8 @@ case "$DIR/" in "$REPO_ROOT"/*) [ -n "$REPO_ROOT" ] && fail "$DIR is inside this
 say "NanoClaw goes in $DIR"
 
 if [ -f "$DIR/$KIT_MARKER" ]; then
-  [ "$(git -C "$DIR" describe --tags --exact-match 2>/dev/null)" = "$REF" ] ||
+  # NanoClaw's setup commits the skills it applies, so the copy is the tested tag plus local commits.
+  git -C "$DIR" merge-base --is-ancestor "$REF" HEAD 2>/dev/null ||
     fail "$DIR is from an earlier version of this kit. Remove it with workshop/uninstall.sh, then run this again."
   say "Using the NanoClaw copy this kit installed in $DIR"
 elif [ -e "$DIR" ]; then
