@@ -6,6 +6,8 @@ One-time steps, each started by a message from the owner.
 
 Fill `sprint.json` in your workspace, finding what you can and asking only for the rest. Keep what is already there.
 
+If Jira or GitHub isn't connected in the gateway yet, its reply carries a connect link; send the owner that link. For GitHub, change `connect=github` in it to `connect=github-app`: the GitHub App reaches only the repositories the owner picks, while the plain GitHub connection acts as their whole account.
+
 1. **Jira site:** find `jira_api` as the `jira` skill explains. If the gateway's Jira app reaches more than one site, or only a site token is set up, ask which site.
 2. **Project:** list the projects you can see (`GET /project/search`) and ask the owner which one to use, unless there is only one.
 3. **Repository:** list the repositories the gateway's GitHub access reaches (`GET api.github.com/installation/repositories` for a GitHub App, `GET api.github.com/user/repos` for a token) and ask which one, unless there's only one. If none fits, tell the owner how to give that access: add the repository to the GitHub App's installation, or create a token for it. Then check `GET api.github.com/repos/<repo>` works.

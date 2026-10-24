@@ -47,7 +47,7 @@ The demo needs OneCLI 1.42: its rules work by method, host and path, which is wh
 
 ## Gateway
 
-The agents hold no credentials. In the OneCLI dashboard, connect GitHub (the GitHub App, or a token for your repository) and Jira. Every agent can use them; the rules decide what needs you:
+The agents hold no credentials. In the OneCLI dashboard, connect Jira and the **GitHub App** (not the plain GitHub connection): the App reaches only the repositories you install it on. Every agent can use them; the rules decide what needs you:
 
 | Request | Rule |
 |---|---|
