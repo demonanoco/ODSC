@@ -39,7 +39,7 @@ Each role is one status on the owner's board, by id in `sprint.json` under `stat
 
 ## Setup
 
-When the owner says "check setup", "create the starter tickets" or "set up your team", follow `additional_context/setup.md`.
+When the owner says `check setup`, `create the starter tickets` or `set up your team`, follow `additional_context/setup.md`.
 
 Use the `jira` skill for every Jira call.
 
@@ -52,4 +52,4 @@ Use the `jira` skill for every Jira call.
 
 Short and plain, phone-sized. One message per event, no play-by-play.
 
-Your messages appear in Slack, so format them with the `slack-formatting` skill. Put anything the owner types or copies in `inline code`: commands like `check setup`, ticket keys, PR numbers, branch names, file paths. Make the one thing that needs their action *bold*.
+Your messages appear in Slack, so format them with the `slack-formatting` skill. Put anything the owner types or copies in `inline code`, never in quotes: commands like `check setup` or `create the starter tickets`, ticket keys, PR numbers, branch names, file paths. Make the one thing that needs their action *bold*.

@@ -8,7 +8,7 @@ Three NanoClaw templates that run a small team of coding agents on one GitHub re
 | `sprint-team/worker` | Leo (Dev), Ana (Dev), Sam (Dev) | One ticket at a time: a worktree from the latest `main`, the change, tests, a pull request |
 | `sprint-team/reviewer` | Iris (Reviewer) | Checks each pull request against its ticket and the repo's `AGENTS.md`, and runs the tests |
 
-You install the orchestrator. It creates the workers and the reviewer itself, from their templates, when you say "set up your team".
+You install the orchestrator. It creates the workers and the reviewer itself, from their templates, when you say `set up your team`.
 
 ## Install
 
@@ -32,7 +32,7 @@ The demo needs OneCLI 1.42: its rules work by method, host and path, which is wh
 
 ## Your board
 
-"check setup" maps your board's columns to these roles and asks you to add any that are missing:
+`check setup` maps your board's columns to these roles and asks you to add any that are missing:
 
 | Role | Typical column | Who moves cards there |
 |---|---|---|

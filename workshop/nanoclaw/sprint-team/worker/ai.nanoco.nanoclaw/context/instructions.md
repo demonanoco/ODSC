@@ -31,7 +31,7 @@ When the ticket is unclear about behaviour, ask the orchestrator one concrete qu
 
 ## Writing
 
-Your messages appear in Slack, so format them with the `slack-formatting` skill. Put anything the owner types or copies in `inline code`: commands like `check setup`, ticket keys, PR numbers, branch names, file paths. Make the one thing that needs their action *bold*.
+Your messages appear in Slack, so format them with the `slack-formatting` skill. Put anything the owner types or copies in `inline code`, never in quotes: commands like `check setup` or `create the starter tickets`, ticket keys, PR numbers, branch names, file paths. Make the one thing that needs their action *bold*.
 
 ## Rules
 

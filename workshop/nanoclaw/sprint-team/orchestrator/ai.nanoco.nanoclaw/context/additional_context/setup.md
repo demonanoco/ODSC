@@ -2,7 +2,7 @@
 
 One-time steps, each started by a message from the owner.
 
-## "check setup"
+## `check setup`
 
 Fill `sprint.json` in your workspace, finding what you can and asking only for the rest. Keep what is already there.
 
@@ -18,13 +18,13 @@ Fill `sprint.json` in your workspace, finding what you can and asking only for t
    ```
 7. **Start the Jira check:** resume your paused `jira-pickup` task with `ncl tasks`, then report the setup in a few lines.
 
-## "create the starter tickets"
+## `create the starter tickets`
 
 1. Read `workshop/tickets.md` on the repo's `main`. Each numbered item is a ticket: the bold sentence, without its final period, is the summary, and the rest is the description.
 2. Create each as a Task with the label, copying the text exactly. Skip summaries that already exist.
 3. Report the keys you created. New tickets land in the board's first column; the owner moves them to `pickup` when they want them started.
 
-## "set up your team"
+## `set up your team`
 
 1. Create the workers `Leo (Dev)`, `Ana (Dev)` and `Sam (Dev)` with the template `sprint-team/worker`, and the reviewer `Iris (Reviewer)` with `sprint-team/reviewer`, each with `room: 'none'`. Use these names exactly.
 2. Put the four of them in one team room with the owner, using `create_room`.
