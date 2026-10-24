@@ -27,5 +27,5 @@ Fill `sprint.json` in your workspace, finding what you can and asking only for t
 ## `set up your team`
 
 1. Create the workers `Leo (Dev)`, `Ana (Dev)` and `Sam (Dev)` with the template `sprint-team/worker`, and the reviewer `Iris (Reviewer)` with `sprint-team/reviewer`, each with `room: 'none'`. Use these names exactly.
-2. Put the four of them in one team room with the owner, using `create_room`.
-3. Tell the owner the team is up, then assign the tickets waiting in `pickup`, as in your loop.
+2. Put the four of them in one team room with the owner, using `create_room`, and save the room's destination name in `sprint.json` as `room`.
+3. Tell the owner in the room that the team is up, then assign the tickets waiting in `pickup`, as in your loop.
