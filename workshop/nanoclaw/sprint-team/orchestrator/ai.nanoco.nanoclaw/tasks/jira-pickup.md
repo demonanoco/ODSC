@@ -1,5 +1,5 @@
 ---
-schedule: "* * * * *"
+schedule: "*/10 * * * * *"
 script: |
   # Reports each ticket in pickup or merge once, until it leaves that column.
   # .jira-seen.json is only this check's cursor, not the agent's memory.
