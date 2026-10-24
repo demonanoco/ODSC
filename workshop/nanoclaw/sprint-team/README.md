@@ -12,8 +12,23 @@ You install the orchestrator. It creates the workers and the reviewer itself, fr
 
 ## Install
 
-1. Copy this `sprint-team` folder into your NanoClaw install's `templates/` folder.
-2. Run the installer and, at "How should we create your first agent?", choose **From local templates**, then **orchestrator** (`sprint-team/orchestrator`).
+From the root of this repository:
+
+```sh
+bash workshop/install.sh
+```
+
+It runs three steps, each its own script in `workshop/setup/`, so a step can be run again on its own:
+
+| Step | Does |
+|---|---|
+| `1-onecli.sh` | Installs the OneCLI gateway with OneCLI's own installer, pinned to version 1.42.0, on its usual ports (dashboard 10254) |
+| `2-nanoclaw.sh` | Gets NanoClaw at the tested release into `~/nanoclaw-v2`, adds these templates, and runs NanoClaw's installer against that gateway: choose Slack, sign in to Claude, then **From local templates → orchestrator** |
+| `3-rules.sh` | Adds the two gateway rules below. The installer asks first; skip it to set your own |
+
+The demo needs OneCLI 1.42: its rules work by method, host and path, which is what holds a merge without blocking git. If another OneCLI version is already running, step 1 stops and says so.
+
+`bash workshop/uninstall.sh` removes both again.
 
 ## Your board
 
@@ -30,15 +45,13 @@ You install the orchestrator. It creates the workers and the reviewer itself, fr
 
 ## Gateway
 
-The agents hold no credentials. On OneCLI 1.44 and later, a new agent gets only its model credential: grant GitHub and Jira to each agent in the connection's **Agent access** dialog, the orchestrator after install and the other four after "set up your team".
+The agents hold no credentials. In the OneCLI dashboard, connect GitHub (the GitHub App, or a token for your repository) and Jira. Every agent can use them; the rules decide what needs you:
 
-| Agent | GitHub | Jira |
-|---|---|---|
-| Orchestrator | Allow: read repository, list pull requests. **Ask: GraphQL queries and GraphQL mutations** (its only GraphQL call is the merge) | Full |
-| Workers | Allow: clone, push, read repository, list pull requests, create pull request, create comment | Allow: read issue, add comment |
-| Reviewer | Allow: clone, read repository, list pull requests, create comment | Allow: read issue |
-
-Everything not listed is blocked. Two traps in OneCLI 1.45: "GraphQL queries" and "GraphQL mutations" match the same requests, so set them the same way; and a merge through GitHub's REST endpoint has no action of its own, so a limited grant blocks it. The orchestrator merges through GraphQL, which waits for your approval in Slack.
+| Request | Rule |
+|---|---|
+| `PUT api.github.com/repos/*/*/pulls/*/merge` | Needs approval: each merge waits for your OK in Slack |
+| `POST api.github.com/graphql` | Blocked, so a merge can't go around the first rule |
+| Everything else | Allowed |
 
 The gateway can't tell branches apart on a push. Protect `main` on GitHub so a pushed branch can only land through a pull request.
 

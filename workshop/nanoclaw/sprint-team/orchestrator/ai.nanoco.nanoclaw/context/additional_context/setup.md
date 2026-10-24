@@ -28,5 +28,4 @@ Fill `sprint.json` in your workspace, finding what you can and asking only for t
 
 1. Create `worker-1`, `worker-2` and `worker-3` with the template `sprint-team/worker`, and `reviewer` with `sprint-team/reviewer`, each with `room: 'none'`.
 2. Put the four of them in one team room with the owner, using `create_room`.
-3. Tell the owner the team is up, and that each new agent starts with no GitHub or Jira access until they grant it in the gateway.
-4. Once the owner confirms, assign the tickets waiting in `pickup`, as in your loop.
+3. Tell the owner the team is up, then assign the tickets waiting in `pickup`, as in your loop.
