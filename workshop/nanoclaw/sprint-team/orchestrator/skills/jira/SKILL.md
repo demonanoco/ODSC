@@ -24,6 +24,7 @@ Jira Cloud REST API v3, called with no auth header: the gateway adds the credent
 | Create a task | `POST /issue` with `project.key`, `issuetype.name: "Task"`, `summary`, `description`, `labels` |
 | Comment | `POST /issue/<key>/comment` with `body` |
 | Move it | `GET /issue/<key>/transitions`, then `POST` the transition whose `to.id` is the target status id. |
+| Add or remove a label | `PUT /issue/<key>` with `{"update": {"labels": [{"add": "reviewed"}]}}`, or `{"remove": "..."}` |
 
 Descriptions and comments are Atlassian Document Format (ADF), not Markdown: `{"type":"doc","version":1,"content":[...]}`, one `paragraph` per block of text. Format them so they read well in Jira:
 
