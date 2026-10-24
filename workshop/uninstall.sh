@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Usage: bash workshop/uninstall.sh [nanoclaw-folder] (default ~/nanoclaw-odsc).
+# Usage: bash workshop/uninstall.sh [nanoclaw-folder] (default ~/odsc_webinar/nanoclaw).
 # Removes what install.sh set up: NanoClaw through its own uninstaller, then the
 # OneCLI gateway and its data. Slack apps the agents created stay in your
 # workspace; remove them there.
