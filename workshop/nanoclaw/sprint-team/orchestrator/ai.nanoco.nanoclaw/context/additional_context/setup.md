@@ -8,7 +8,7 @@ Fill `sprint.json` in your workspace, finding what you can and asking only for t
 
 1. **Jira site:** find `jira_api` as the `jira` skill explains. If the gateway's Jira app reaches more than one site, or only a site token is set up, ask which site.
 2. **Project:** list the projects you can see (`GET /project/search`) and ask the owner which one to use, unless there is only one.
-3. **Repository:** ask for it as `<owner>/<name>`, and check `GET api.github.com/repos/<repo>` works.
+3. **Repository:** list the repositories the gateway's GitHub access reaches (`GET api.github.com/installation/repositories` for a GitHub App, `GET api.github.com/user/repos` for a token) and ask which one, unless there's only one. If none fits, tell the owner how to give that access: add the repository to the GitHub App's installation, or create a token for it. Then check `GET api.github.com/repos/<repo>` works.
 4. **Label:** `agent`, unless the owner names another.
 5. **Board:** read the project's statuses and pick one for each role in your instructions' board table, by meaning rather than exact name. Show the owner the mapping as a table. For a role with no fitting status, suggest a column name (`Review` for `ready`, `Merge` for `merge`) and ask the owner to add it; you can't. Map again once they say it's there.
 6. **Write `sprint.json`**, with the status ids:
